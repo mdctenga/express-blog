@@ -4,9 +4,11 @@ module.exports = function(sequelize, DataTypes) {
     title: DataTypes.TEXT,
     content: DataTypes.TEXT
   }, {
+    underscored: true,
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.Post.hasMany(models.Comment);
+        models.Post.belongsTo(models.User);
       }
     }
   });
